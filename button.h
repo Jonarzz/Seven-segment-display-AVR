@@ -13,6 +13,8 @@
 
 #define BUTTON_DELAY 20
 
+uint8_t clicksCounter;
+
 void initializeButton();
 uint8_t wasButtonClicked(uint8_t buttonPin);
 

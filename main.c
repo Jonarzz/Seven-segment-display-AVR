@@ -6,27 +6,20 @@
  */
 
 #include "display.h"
-#include "button.h"
 
 
 void interrupt_init();
 
 int main() {
 	digitNumber = 1;
-	clicksCounter = 0;
 
 	interrupt_init();
 	sei();
 
 	initializeDisplay();
-	initializeButton();
 
 	while (1) {
-		if (wasButtonClicked(BUTTON)) {
-			clicksCounter++;
-		}
-
-		displayNumber(clicksCounter);
+		displayNumber(123);
 	}
 }
 

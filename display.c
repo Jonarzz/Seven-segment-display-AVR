@@ -73,28 +73,13 @@ void setThousands() {
 }
 
 void displayNumber(uint16_t number) {
-	uint8_t ones = number % 10;
+	ones = number % 10;
 	number /= 10;
-	uint8_t tens = number % 10;
+	tens = number % 10;
 	number /= 10;
-	uint8_t hundreds = number % 10;
+	hundreds = number % 10;
 	number /= 10;
-	uint8_t thousands = number % 10;
-
-	switch (digitNumber) {
-		case 1:
-			displayOnes(ones);
-			break;
-		case 2:
-			displayTens(tens);
-			break;
-		case 3:
-			displayHundreds(hundreds);
-			break;
-		case 4:
-			displayThousands(thousands);
-			break;
-	}
+	thousands = number % 10;
 }
 
 void displayOnes(uint8_t ones) {

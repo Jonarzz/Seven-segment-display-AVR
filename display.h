@@ -16,6 +16,11 @@ volatile uint8_t digitNumber;
 volatile uint8_t cycleCounter;
 volatile uint8_t secondsCounter;
 
+uint8_t ones;
+uint8_t tens;
+uint8_t hundreds;
+uint8_t thousands;
+
 void initializeDisplay();
 void initializeDigitsPort();
 void initializeSegmentsPort();

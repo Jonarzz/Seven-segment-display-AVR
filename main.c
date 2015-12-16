@@ -25,12 +25,14 @@ int main() {
 	receivedMessage = 0;
 	messageStarted = 0;
 	messageEnded = 0;
+	USARTBufferIndex = 0;
 
 	while (1) {
 		if (messageEnded) {
 			displayNumber(message);
 			wasMessageReceived = 0;
 			messageEnded = 0;
+			sendMessage("hello");
 		}
 	}
 }
@@ -89,4 +91,13 @@ ISR(USART0_RX_vect) {
 	}
 
 	wasMessageReceived = 1; //ustaw flagê odbioru liczby dla main()
+}
+
+ISR(USART0_UDRE_vect){
+	 if(USARTBuffer[USARTBufferIndex] != 0) {
+		 UDR0 = USARTBuffer[USARTBufferIndex++];
+	 }
+	 else {
+		 UCSR0B &= ~(1<<UDRIE);
+	 }
 }

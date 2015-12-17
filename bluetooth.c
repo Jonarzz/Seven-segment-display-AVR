@@ -21,10 +21,10 @@ void initUSART() {
 	UCSR0C = (1<<UCSZ1) | (1<<UCSZ0);
 }
 
-void sendMessage(char message[30]) {
-	strncpy(USARTBuffer, message, 30);
+void sendMessage(char message[USARTBufferSize - 2]) {
+	strncpy(USARTBuffer, message, USARTBufferSize - 2);
 	unsigned char z;
-	for (z = 0; z < 30; z++) {
+	for (z = 0; z < USARTBufferSize - 2; z++) {
 		if (USARTBuffer[z] == 0) {   //czy to koniec takstu w tablicy
 			USARTBuffer[z] = 13;  //znak powrotu karetki CR (Carrige Return)
 			USARTBuffer[z + 1] = 10; //znak nowej linii LF (Line Feed)
